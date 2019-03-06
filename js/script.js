@@ -5,7 +5,12 @@
 var site_url = "https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC";
 var pic_url = "var pic_url = response.data.images.original.url";
 
-$("#search-button").click(function(){
+function appendImg(){
+    $(".gallery").html(""); //clear gallery, so the gif from the pervious searches disappear
+  if($("#search-term").val() !== ""){ //only replace puppy with search term if it is not left blank
+      site_url = `https://api.giphy.com/v1/gifs/search?q=${$("#search-term").val()}&rating=pg&api_key=dc6zaTOxFJmzC` //replacing the puppy with the word in inpu box
+  }
+  
   
 $.ajax({
     url:site_url,
@@ -21,16 +26,16 @@ $.ajax({
     });
     
     //$("#search-term").val()
+}  
+
+function atBottom(){
     
     
+}
     
-    
-    
-    
-    
-    
-});    
-    
+
+
+
 
 
 
@@ -42,4 +47,8 @@ $.ajax({
 //     }
     
 // });
+
+$("#search-button").click(function(){
+    appendImg();
+});
 
